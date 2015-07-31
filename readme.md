@@ -1,5 +1,9 @@
 # DateSelector
 
+`DateSelector` and `DateTumbler`.
+
+---
+
 win7
 
 ![](images/win7.png)
@@ -16,6 +20,16 @@ Android 4
 
 ```qml
 DateSelector{
+    startYear: 2000    // set the start year
+    endYear: 2016      // set the end year
+    onDateChanged:{
+        console.log(date);
+    }
+}
+```
+
+```qml
+DateTumbler{
     startYear: 2000    // set the start year
     endYear: 2016      // set the end year
     onDateChanged:{
