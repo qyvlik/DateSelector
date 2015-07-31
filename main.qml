@@ -20,35 +20,36 @@ ApplicationWindow {
         }
     }
 
-
-    GroupBox {
-        title: qsTr("Date")
-        anchors.centerIn: parent
-        Column{
-            spacing: 10
-            ColumnLayout {
+    ScrollView{
+        anchors.fill: parent
+        GroupBox {
+            title: qsTr("Date")
+            anchors.centerIn: parent
+            Column{
                 spacing: 10
-                DateSelector{
-                    id: dateSelector
-                    startYear: 2000
-                    endYear: 2016
+                ColumnLayout {
+                    spacing: 10
+                    DateSelector{
+                        id: dateSelector
+                        startYear: 2000
+                        endYear: 2016
+                    }
+                    Text{
+                        text: dateSelector.date
+                    }
                 }
-                Text{
-                    text: dateSelector.date
-                }
-            }
-            ColumnLayout {
-                spacing: 10
-                DateTumbler{
-                    id: dateTumbler
-                    startYear: 2000
-                    endYear: 2016
-                }
-                Text{
-                    text: dateTumbler.date
+                ColumnLayout {
+                    spacing: 10
+                    DateTumbler{
+                        id: dateTumbler
+                        startYear: 2000
+                        endYear: 2016
+                    }
+                    Text{
+                        text: dateTumbler.date
+                    }
                 }
             }
         }
     }
-
 }

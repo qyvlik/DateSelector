@@ -8,6 +8,8 @@ win7
 
 ![](images/win7.png)
 
+![](images/win7-new.png)
+
 ---
 
 Android 4
@@ -15,6 +17,11 @@ Android 4
 ![](images/android.png)
 
 ![](images/android-landspace.png)
+
+
+![](images/01.png)
+
+![](images/02.png)
 
 ## How to uss
 

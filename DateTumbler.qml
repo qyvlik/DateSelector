@@ -30,7 +30,8 @@ Control{
         //spacing: 10
         clip: true
         anchors.centerIn: parent
-        height: 60 * __screen()
+//        height: 60 * __screen()
+        height: width * 0.7
 
         readonly property var leapYearMonthDaysCountList: [31,29,31,30,31,30,31,31,30,31,30,31]
         readonly property var yearMonthDaysCountList: [31,28,31,30,31,30,31,31,30,31,30,31]
@@ -73,6 +74,9 @@ Control{
         ListView {
             id: yearSelect
 
+            anchors.top: rowLayout.top
+            anchors.topMargin: yearSelect.height * 0.3
+
             Layout.fillHeight: true
             Layout.minimumWidth: 100
             Layout.preferredWidth: 120
@@ -80,9 +84,23 @@ Control{
             model: rowLayout.__get(startYear, endYear)
             currentIndex: 1
 
+            highlight:  Rectangle {
+                width: yearSelect.width
+                height: yearSelect.height * 0.3
+                color: "lightsteelblue"; radius: 5
+                y: yearSelect.currentItem.y
+                Behavior on y {
+                    SpringAnimation {
+                        spring: 3
+                        damping: 0.2
+                    }
+                }
+            }
+            highlightFollowsCurrentItem: false
+
             highlightRangeMode: ListView.StrictlyEnforceRange
-            snapMode: ListView.SnapOneItem;
-            boundsBehavior: ListView.StopAtBounds
+//            snapMode: ListView.SnapOneItem;
+//            boundsBehavior: ListView.StopAtBounds
 
             delegate:
                 Rectangle{
@@ -90,7 +108,7 @@ Control{
                 border.color: "#ccc"
                 border.width: 1
                 width: yearSelect.width
-                height: yearSelect.height
+                height: yearSelect.height * 0.3
                 Text{
                     anchors.centerIn: parent
                     font.family: "微软雅黑"
@@ -108,6 +126,9 @@ Control{
         ListView {
             id: monthSelect
 
+            anchors.top: rowLayout.top
+            anchors.topMargin: yearSelect.height * 0.3
+
             Layout.fillHeight: true
             Layout.minimumWidth: 100
             Layout.preferredWidth: 120
@@ -115,9 +136,23 @@ Control{
             model:rowLayout.__get(1, 12)
             currentIndex: 1
 
+            highlight:  Rectangle {
+                width: monthSelect.width
+                height: monthSelect.height * 0.3
+                color: "lightsteelblue"; radius: 5
+                y: monthSelect.currentItem.y
+                Behavior on y {
+                    SpringAnimation {
+                        spring: 3
+                        damping: 0.2
+                    }
+                }
+            }
+            highlightFollowsCurrentItem: false
+
             highlightRangeMode: ListView.StrictlyEnforceRange
-            snapMode: ListView.SnapOneItem
-            boundsBehavior: ListView.StopAtBounds
+//            snapMode: ListView.SnapOneItem
+//            boundsBehavior: ListView.StopAtBounds
 
             delegate:
                 Rectangle{
@@ -125,7 +160,7 @@ Control{
                 border.color: "#ccc"
                 border.width: 1
                 width: monthSelect.width
-                height: monthSelect.height
+                height: monthSelect.height * 0.3
                 Text{
                     anchors.centerIn: parent
                     font.family: "微软雅黑"
@@ -146,13 +181,30 @@ Control{
         ListView {
             id: daySelect
 
+            anchors.top: rowLayout.top
+            anchors.topMargin: daySelect.height * 0.3
+
             Layout.fillHeight: true
             Layout.minimumWidth: 100
             Layout.preferredWidth: 120
 
+            highlight:  Rectangle {
+                width: daySelect.width
+                height: daySelect.height * 0.3
+                color: "lightsteelblue"; radius: 5
+                y: daySelect.currentItem.y
+                Behavior on y {
+                    SpringAnimation {
+                        spring: 3
+                        damping: 0.2
+                    }
+                }
+            }
+            highlightFollowsCurrentItem: false
+
             highlightRangeMode: ListView.StrictlyEnforceRange
-            snapMode: ListView.SnapOneItem
-            boundsBehavior: ListView.StopAtBounds
+//            snapMode: ListView.SnapOneItem
+//            boundsBehavior: ListView.StopAtBounds
 
             model: rowLayout.__getDaysCount(yearSelect.model[yearSelect.currentIndex],
                                             monthSelect.model[monthSelect.currentIndex])
@@ -162,7 +214,7 @@ Control{
                 border.color: "#ccc"
                 border.width: 1
                 width: daySelect.width
-                height: daySelect.height
+                height: daySelect.height * 0.3
                 Text{
                     anchors.centerIn: parent
                     font.family: "微软雅黑"
